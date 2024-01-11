@@ -19,12 +19,7 @@ public class IRemoteService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        binder.linkToDeath(new IBinder.DeathRecipient() {
-            @Override
-            public void binderDied() {
-                Log.i("IRemoteService", "断开了");
-            }
-        }, 0);
+        binder.linkToDeath(() -> Log.i("IRemoteService", "断开了"), 0);
         return binder;
     }
 
