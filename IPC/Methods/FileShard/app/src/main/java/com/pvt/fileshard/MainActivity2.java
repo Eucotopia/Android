@@ -23,9 +23,7 @@ public class MainActivity2 extends AppCompatActivity {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("a.txt"));
             User o = (User) objectInputStream.readObject();
             Log.i(TAG, "onCreate: user" + o);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
